@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6efe4;
+  --foreground: #241a13;
+
+  --color-origen-paper: #f6efe4;
+  --color-origen-surface: #efe3d1;
+  --color-origen-ink: #241a13;
+  --color-origen-teal: #0e4a48;
+  --color-origen-teal-dark: #082f2e;
+  --color-origen-coffee: #6b4226;
+  --color-origen-caramel: #b07c43;
+  --color-origen-chili: #a8442c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-origen-paper: var(--color-origen-paper);
+  --color-origen-surface: var(--color-origen-surface);
+  --color-origen-ink: var(--color-origen-ink);
+  --color-origen-teal: var(--color-origen-teal);
+  --color-origen-teal-dark: var(--color-origen-teal-dark);
+  --color-origen-coffee: var(--color-origen-coffee);
+  --color-origen-caramel: var(--color-origen-caramel);
+  --color-origen-chili: var(--color-origen-chili);
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-courier);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  background-image:
+    radial-gradient(rgb(36 26 19 / 0.045) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.dish-placeholder {
+  background-image: radial-gradient(
+      circle at 30% 20%,
+      rgb(255 255 255 / 0.16),
+      transparent 55%
+    ),
+    var(--tile-gradient, linear-gradient(135deg, var(--color-origen-teal), var(--color-origen-caramel)));
+}
+
+.photo-warm {
+  filter: sepia(0.12) saturate(1.15) contrast(1.05) brightness(1.02);
+}
+
+.paper-shadow {
+  box-shadow:
+    0 1px 0 rgb(36 26 19 / 0.08),
+    0 18px 30px -18px rgb(36 26 19 / 0.35);
+}
+
+.shadow-print {
+  box-shadow: 3px 3px 0 0 rgb(36 26 19 / 0.85);
+}
+
+.fade-edge-right {
+  mask-image: linear-gradient(to right, black calc(100% - 2.5rem), transparent 100%);
+}
+
+@media (min-width: 768px) {
+  .fade-edge-right {
+    mask-image: none;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
