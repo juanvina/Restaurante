@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import type { LucideIcon } from "lucide-react";
 
 type PhotoProps = {
-  src?: string;
+  src?: string | StaticImageData;
   alt: string;
   gradient: string;
   icon: LucideIcon;

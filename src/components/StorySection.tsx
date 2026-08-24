@@ -4,6 +4,9 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Flame, Sprout, Soup } from "lucide-react";
 import Photo from "@/components/Photo";
+import plazaMercadoImg from "@/img/Plaza-Mercado.png";
+import especiasCajaImg from "@/img/Especias-caja.png";
+import cocinaHerenciaImg from "@/img/Cocina-herencia.png";
 
 const NARRATIVE = [
   "Todo empieza en la plaza de mercado: tomates de temporada, cilantro recién cortado, panela de trapiche. Ingredientes que cualquier cocina tolimense reconocería como propios.",
@@ -13,26 +16,26 @@ const NARRATIVE = [
 
 const PHOTO_STACK = [
   {
-    icon: Flame,
-    rotate: "-rotate-6",
-    offset: 0,
-    image: "/story/travesia-1.jpg",
-    alt: "Especias tostadas en la cocina de Origen",
-    gradient: "linear-gradient(135deg, var(--color-origen-teal), var(--color-origen-caramel))",
-  },
-  {
     icon: Sprout,
-    rotate: "rotate-3",
-    offset: 40,
-    image: "/story/travesia-2.jpg",
+    rotate: "-rotate-6",
+    aspect: "790 / 444",
+    image: plazaMercadoImg,
     alt: "Ingredientes frescos de la plaza de mercado",
     gradient: "linear-gradient(135deg, var(--color-origen-coffee), var(--color-origen-teal-dark))",
   },
   {
+    icon: Flame,
+    rotate: "rotate-3",
+    aspect: "1 / 1",
+    image: especiasCajaImg,
+    alt: "Especias tostadas en la cocina de Origen",
+    gradient: "linear-gradient(135deg, var(--color-origen-teal), var(--color-origen-caramel))",
+  },
+  {
     icon: Soup,
     rotate: "-rotate-2",
-    offset: 80,
-    image: "/story/travesia-3.jpg",
+    aspect: "2 / 3",
+    image: cocinaHerenciaImg,
     alt: "Curry recién preparado en la cocina de Origen",
     gradient: "linear-gradient(135deg, var(--color-origen-caramel), var(--color-origen-coffee))",
   },
@@ -67,21 +70,23 @@ export default function StorySection() {
 
       <div className="grid gap-16 md:grid-cols-[0.85fr_1.15fr] md:items-start">
         <div className="md:sticky md:top-28 md:self-start">
-          <div className="relative mx-auto h-80 w-full max-w-sm sm:h-96">
+          <div className="mx-auto flex max-w-sm flex-wrap items-end justify-center gap-6 sm:max-w-md">
             {PHOTO_STACK.map((photo, index) => (
               <motion.div
                 key={index}
-                style={{ y: parallaxY[index], top: photo.offset }}
-                className={`paper-shadow absolute left-1/2 h-56 w-64 -translate-x-1/2 rounded-sm border-[10px] border-origen-paper ${photo.rotate}`}
+                style={{ y: parallaxY[index] }}
+                className={`paper-shadow w-36 shrink-0 rounded-sm border-[10px] border-origen-paper sm:w-44 ${photo.rotate}`}
               >
-                <Photo
-                  src={photo.image}
-                  alt={photo.alt}
-                  gradient={photo.gradient}
-                  icon={photo.icon}
-                  className="absolute inset-0"
-                  sizes="256px"
-                />
+                <div className="relative w-full" style={{ aspectRatio: photo.aspect }}>
+                  <Photo
+                    src={photo.image}
+                    alt={photo.alt}
+                    gradient={photo.gradient}
+                    icon={photo.icon}
+                    className="absolute inset-0"
+                    sizes="(min-width: 640px) 200px, 200px"
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
