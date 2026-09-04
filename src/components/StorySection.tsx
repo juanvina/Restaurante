@@ -22,6 +22,7 @@ const PHOTO_STACK = [
     image: plazaMercadoImg,
     alt: "Ingredientes frescos de la plaza de mercado",
     gradient: "linear-gradient(135deg, var(--color-origen-coffee), var(--color-origen-teal-dark))",
+    size: "w-48 sm:w-64",
   },
   {
     icon: Flame,
@@ -30,6 +31,7 @@ const PHOTO_STACK = [
     image: especiasCajaImg,
     alt: "Especias tostadas en la cocina de Origen",
     gradient: "linear-gradient(135deg, var(--color-origen-teal), var(--color-origen-caramel))",
+    size: "w-48 sm:w-60",
   },
   {
     icon: Soup,
@@ -38,6 +40,7 @@ const PHOTO_STACK = [
     image: cocinaHerenciaImg,
     alt: "Curry recién preparado en la cocina de Origen",
     gradient: "linear-gradient(135deg, var(--color-origen-caramel), var(--color-origen-coffee))",
+    size: "w-36 sm:w-44",
   },
 ];
 
@@ -75,7 +78,7 @@ export default function StorySection() {
               <motion.div
                 key={index}
                 style={{ y: parallaxY[index] }}
-                className={`paper-shadow w-36 shrink-0 rounded-sm border-[10px] border-origen-paper sm:w-44 ${photo.rotate}`}
+                className={`paper-shadow shrink-0 rounded-sm border-[10px] border-origen-paper ${photo.size} ${photo.rotate}`}
               >
                 <div className="relative w-full" style={{ aspectRatio: photo.aspect }}>
                   <Photo
